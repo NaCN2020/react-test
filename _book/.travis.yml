@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "8"
+before_script:
+  - npm install -g eslint
+  #- npm install -g karma
+install:
+ - npm install -g gitbook-cli # 安装编译工具
+script:
+- gitbook build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  target-branch: gh-pages
+  verbose: true
+  on:
+    branch: master
